@@ -21,6 +21,7 @@ body {
     box-shadow: 0 10px 30px rgba(0, 50, 100, 0.1);
     border-radius: 8px;
     border-top: 5px solid #004a99;
+    box-sizing: border-box; /* 패딩이 너비에 영향을 주지 않도록 설정 */
 }
 
 /* 타이틀: 여백 축소 */
@@ -51,7 +52,7 @@ header {
 /* --- [중요] 메인 사진 높이 대폭 축소 --- */
 .image-area {
     width: 100%;
-    height: 200px; /* 280px -> 200px (전체 길이 줄이는 핵심) */
+    height: 200px; 
     overflow: hidden;
     border-radius: 4px;
     background-color: #eee;
@@ -64,11 +65,11 @@ header {
     display: block;
 }
 
-/* 시구 영역: 여백 축소 */
+
 .verse-area {
-    margin: 15px 0; /* 20px -> 15px */
+    margin: 15px 0; 
     text-align: center;
-    min-height: 50px; /* 60px -> 50px */
+    min-height: 50px; 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -88,37 +89,47 @@ footer {
     padding-top: 15px;
 }
 
+/* 1. 부모 컨테이너: 양끝 정렬을 중앙 정렬로 변경하고, 두 요소 사이 간격을 설정합니다. */
 .book-info {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
+    justify-content: center; /* space-between -> center 로 변경 */
+    align-items: center; 
+    gap: 25px; 
 }
-
 .purchase-links {
-    flex: 1;
+    
+    min-width: 0; 
 }
 
 #book-title {
-    font-size: 1.1rem; /* 폰트 살짝 줄임 */
-    margin-bottom: 10px; /* 여백 줄임 */
+    font-size: 1.05rem; /* 좌측 공간 확보를 위해 아주 미세하게 조정 */
+    margin-bottom: 10px; 
+    color: #004a99;
+    font-weight: bold;
+}
+#publisher {
+    font-size: 0.95rem; 
+    margin-bottom: 5px; 
     color: #004a99;
     font-weight: bold;
 }
 
 .button-group {
     display: flex;
-    gap: 8px; /* 버튼 간격 살짝 좁힘 */
+    gap: 6px; /* 버튼 간격을 미세하게 조정 */
+    flex-wrap: wrap; /* 공간이 부족할 경우 버튼이 자연스럽게 아래로 내려가도록 설정 */
 }
 
 .link-btn {
     text-decoration: none;
     background-color: #eef4ff;
     color: #004a99;
-    padding: 8px 12px; /* 버튼 크기 살짝 컴팩트하게 */
+    padding: 8px 10px; 
     border-radius: 4px;
     font-size: 0.8rem;
     border: 1px solid #cce0ff;
     transition: all 0.2s ease;
+    white-space: nowrap;
 }
 
 .link-btn:hover {
@@ -126,12 +137,11 @@ footer {
     color: white;
 }
 
-/* --- [중요] 하단 책 표지 크기 축소 --- */
 .book-cover {
-    width: 80px;  /* 100px -> 80px */
-    height: 120px; /* 150px -> 120px (전체 길이 줄임) */
-    flex-shrink: 0; /* 공간 좁아져도 찌그러지지 않게 고정 */
-    margin-left: 15px;
+    width: 110px;  
+    height: 165px; 
+    flex-shrink: 0; 
+   
 }
 
 .book-cover img {
@@ -139,9 +149,9 @@ footer {
     height: 100%;
     object-fit: cover;
     box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
 }
 
-/* ★ 추가된 카피라이트 스타일 */
 .copyright {
     margin-top: 20px;
     text-align: center;
@@ -181,12 +191,12 @@ footer {
         justify-content: center;
     }
 
+    /* --- [수정] 모바일 책 표지 크기 대폭 확대 --- */
     .book-cover {
         margin-left: 0;
         margin-bottom: 15px;
         order: 1;
-        /* 모바일에서는 표지를 조금 더 키워서 잘 보이게 */
-        width: 90px;
-        height: 135px;
+        width: 130px;  /* 90px -> 130px로 확대 */
+        height: 195px; /* 135px -> 195px로 확대 */
     }
 }
